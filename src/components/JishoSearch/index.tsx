@@ -48,7 +48,7 @@ const JishoSearch = () => {
   const isDev = process.env.NODE_ENV === 'development';
   const baseUrl = isDev ? 'https://cors-anywhere.herokuapp.com/https://jisho.org/api/v1' : 'https://jisho.org/api/v1';
   const { data, isFetching, isError, refetch, isFetched } = useQuery<JishoSearchResponse[]>(['jishoSearch'], async () => {
-    const response = await fetch(`{baseUrl}/search/words?keyword=${searchText}`, {
+    const response = await fetch(`${baseUrl}/search/words?keyword=${searchText}`, {
       headers: {
         'X-Requested-With': 'XMLHttpRequest'
       }
