@@ -45,10 +45,8 @@ const JishoSearch = () => {
   const [searchText, setSearchText] = useState('');
   const isSM = useMediaQuery(theme.breakpoints.down('sm'));
   
-  const isDev = process.env.NODE_ENV === 'development';
-  const baseUrl = isDev ? 'https://cors-anywhere.herokuapp.com/https://jisho.org/api/v1' : 'https://jisho.org/api/v1';
   const { data, isFetching, isError, refetch, isFetched } = useQuery<JishoSearchResponse[]>(['jishoSearch'], async () => {
-    const response = await fetch(`${baseUrl}/search/words?keyword=${searchText}`, {
+    const response = await fetch(`https://yume-no-proxy.azurewebsites.net/jisho/${searchText}`, {
       headers: {
         'X-Requested-With': 'XMLHttpRequest'
       }
